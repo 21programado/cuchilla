@@ -4,6 +4,7 @@ const FILES_TO_CACHE = [
   './',
   './index.html',
   './manifest.json',
+  './lugares.json',
   './cuchilla-alta.jpg',
   './leaflet/leaflet.css',
   './leaflet/leaflet.js',
