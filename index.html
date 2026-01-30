@@ -7,6 +7,7 @@
 
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="leaflet/leaflet.css" />
+  <meta name="theme-color" content="#ffffff">
 
   <style>
     html, body {
@@ -46,5 +47,13 @@
     map.setMaxBounds(bounds);
   </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js');
+}
+</script>
+
+
 </body>
 </html>
+
