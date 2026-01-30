@@ -1,4 +1,4 @@
-const CACHE_NAME = 'plano-cuchilla-alta-v2';
+const CACHE_NAME = 'plano-cuchilla-alta-v3';
 
 const FILES_TO_CACHE = [
   './',
@@ -12,15 +12,31 @@ const FILES_TO_CACHE = [
   './icon-512.png'
 ];
 
+/* ===== INSTALACIÓN ===== */
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(FILES_TO_CACHE))
   );
 });
 
+/* ===== ACTIVACIÓN (LIMPIEZA) ===== */
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys
+          .filter(k => k !== CACHE_NAME)
+          .map(k => caches.delete(k))
+      )
+    )
+  );
+});
+
+/* ===== FETCH ===== */
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
   );
 });
-
