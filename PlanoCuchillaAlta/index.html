@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Plano Cuchilla Alta</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="leaflet/leaflet.css" />
+
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #f5f5f5;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script src="leaflet/leaflet.js"></script>
+  <script>
+    const imageWidth = 1528;
+    const imageHeight = 1170;
+
+    const bounds = [[0, 0], [imageHeight, imageWidth]];
+
+    const map = L.map('map', {
+      crs: L.CRS.Simple,
+      minZoom: -1,
+      maxZoom: 2,
+      zoomControl: true,
+      attributionControl: false
+    });
+
+    L.imageOverlay('cuchilla-alta.jpg', bounds).addTo(map);
+
+    map.fitBounds(bounds);
+    map.setMaxBounds(bounds);
+  </script>
+
+</body>
+</html>
