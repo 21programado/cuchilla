@@ -1,4 +1,4 @@
-const CACHE_NAME = 'plano-cuchilla-alta-v4';
+const CACHE_NAME = 'plano-cuchilla-alta-v5';
 
 const FILES_TO_CACHE = [
   './',
@@ -40,4 +40,5 @@ self.addEventListener('fetch', event => {
       .then(response => response || fetch(event.request))
   );
 });
+
 
